@@ -19,7 +19,7 @@ public class ArticlesDao {
 	}
 	public List allArticles()
 	{
-		String sql="select * from articles where deleteflag=0";
+		String sql="select * from articles where deleteflag=0 order by id desc";
 		List list=jdbcT.queryForList(sql);
 		Iterator iterator=list.iterator();
 		return list;		

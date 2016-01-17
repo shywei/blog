@@ -37,100 +37,6 @@
 	    });
 	});
 </script>
-<style type="text/css">
-.home {
-	background-image: url(${ctx}/static/images/index-bk.jpg);
-	background-repeat: no-repeat;
-}
-
-.ghost-button {
-	display: inline-block;
-	width: 200px;
-	padding: 8px;
-	color: #fff;
-	border: 1px solid #fff;
-	text-align: center;
-	outline: none;
-	text-decoration: none;
-}
-.ghost-button:hover, .ghost-button:active {
-	background-color: #fff;
-	color: #000;
-	text-decoration: none;
-}
-.ghost-button-transition {
-	display: inline-block;
-	width: 200px;
-	padding: 8px;
-	color: #fff;
-	border: 2px solid #fff;
-	text-align: center;
-	outline: none;
-	text-decoration: none;
-	transition: background-color 0.2s ease-out,
-	color 0.2s ease-out;
-}
-.ghost-button-transition:hover,
-.ghost-button-transition:focus,
-.ghost-button-transition:active {
-	background-color: #fff;
-	color: #000;
-	text-decoration: none;
-	transition: background-color 0.3s ease-in,
-	color 0.3s ease-in;
-}
-.footer {
-    color: #506368;
-    background: #41464d;
-    overflow: hidden;
-}
-.footer a {
-    color: #d2d5d9;
-    transition: color .2s;
-}
-.footer h5 {
-    color: #fff;
-    font-size: 20px;
-    font-weight: 200;
-    font-family: Roboto,Helvetica,sans-serif;
-    margin-bottom: 30px;
-}
-a {
-	text-decoration: none;
-}
-a:hover,
-a:focus,
-a:active {
-	text-decoration: none;
-}
-.welcome {
-	color: #fff;
-}
-.header {
-	padding:25px;
-	margin-bottom: 30px;
-}
-.headItem {
-    color: #fff;
-    transition: color .2s;    
-    padding:0 20px;
-    font-size:18px;
-    font-weight:200;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-.headItem:hover,
-.headItem:focus,
-.headItem:active {
-	color: #fff;
-	text-decoration: none;
-	border: 1px solid #fff;
-}
-.article {
-	background-color: #fff;
-	border-bottom:1px solid #EEEEEE;
-	padding:15px;
-}
-</style>
 </head>
 <body>	
 	<div class="home">	
@@ -179,12 +85,15 @@ a:active {
 			</div>
 		</div> -->
 	</div>
-	<div>
+	<div class="articles">
 		<div class="container">
-		 <c:forEach items="${articles}" var="article">
+		 <br>
+		 <c:forEach begin="0" end="2" items="${articles}" var="article">
 		 <div class="article">
-		 	<h2>${article.title}</h2>
-		 	<div>${article.content}</div>
+		 	<h2 class="articleTicle">${article.title}</h2>
+		 	<hr>
+		 	<div>${article.content}</div>		 	
+		 	<hr>
 		 	<div class="row-fluid">
 		 		<a class="pull-left">
 		 		2016-01-15
@@ -192,9 +101,10 @@ a:active {
 		 		<a href="${ctx}/articles/view?id=${article.id}" class="pull-right">
 		 		全文链接
 		 		</a>
+		 		<br>
 		 	</div>
-		 	<br>
-		 </div>
+		 </div>		 
+		 <br>
 		 </c:forEach>
 		</div>
 	</div>
