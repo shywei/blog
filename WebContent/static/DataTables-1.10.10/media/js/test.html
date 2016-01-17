@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>諡帛膚鬘ｹ逶ｮ邂｡逅�/title>
+	<meta name="decorator" content="default" /> <script src="jquery.js"
+		type="text/javascript"></script> <script type="text/javascript">
+		$(document).ready(function(){
+		  $("#b01").click(function(){
+			  htmlobj=$.ajax({
+			  type:"get",
+			  url:"http://localhost:8080/smartpark/a/servicehall/item/ItemData?winId=1",
+			  async:false,
+			  dataType: "json",
+			  success:function(result,textStatus){
+				  var html = ''; 
+				  $.each(result, function(i, field){
+		              html += field.title + field.encoding;
+		              
+		        });
+				 alert(html);
+			  }
+			});
+		  });
+		});
+	</script>
+</head>
+<body>
+	<button id="b01" type="button">闔ｷ蜿頬son</button>
+
+</body>
+</html>
