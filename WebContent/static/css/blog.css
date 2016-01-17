@@ -1,3 +1,6 @@
+body {
+	background-color:#ededef;
+}
 .home {
 	background-image: url(../images/index-bk.jpg);
 	background-repeat: no-repeat;

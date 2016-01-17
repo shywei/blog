@@ -9,6 +9,28 @@
 <title>文章详情</title>
 </head>
 <body>
-
+	<div class="articles">
+		<div class="container">
+		 <br>
+		 <c:forEach items="${articles}" var="article">
+		 <div class="article">
+		 	<h2 class="articleTicle">${article.title}</h2>
+		 	<hr>
+		 	<div>${article.content}</div>		 	
+		 	<hr>
+		 	<div class="row-fluid">
+		 		<a class="pull-left">
+		 		2016-01-15
+		 		</a>
+		 		<a href="${ctx}/articles/view?id=${article.id}" class="pull-right">
+		 		全文链接
+		 		</a>
+		 		<br>
+		 	</div>
+		 </div>		 
+		 <br>
+		 </c:forEach>
+		</div>
+	</div>
 </body>
 </html>

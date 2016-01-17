@@ -68,7 +68,7 @@
 				<p>而游乎四海之外</p>
 				<p>——《庄子·逍遥游》</p>
 				<p>
-					<a class="ghost-button-transition" href="#" role="button">进入网站</a>
+					<a class="ghost-button-transition" href="${ctx}/articles/list" role="button">进入网站</a>
 				</p>
 			</div>
 		</div>
