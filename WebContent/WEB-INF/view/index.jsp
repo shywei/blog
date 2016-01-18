@@ -45,7 +45,7 @@
 				<a class="headItem" href="#">姑射蝉</a>
 			</div>
 			<div class="pull-right">
-				<a class="headItem"  href="#">姑射蝉</a>
+				<a class="headItem"  href="${ctx}/articles/new">新文章</a>
 			</div>
 			<div class="pull-right">
 				<a class="headItem"  href="#">留言板</a>
@@ -96,7 +96,7 @@
 		 	<hr>
 		 	<div class="row-fluid">
 		 		<a class="pull-left">
-		 		2016-01-15
+		 		评论（${article.count}）
 		 		</a>
 		 		<a href="${ctx}/articles/view?id=${article.id}" class="pull-right">
 		 		全文链接

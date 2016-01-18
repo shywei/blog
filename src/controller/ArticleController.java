@@ -29,4 +29,9 @@ public class ArticleController {
 		 model.addAttribute("articles", list);
         return "articleView";
     }
+	
+	@RequestMapping(value={"/new"})
+    public String articleNew(){
+        return "articleNew";
+    }
 }

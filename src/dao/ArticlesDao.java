@@ -18,12 +18,15 @@ public class ArticlesDao {
 		this.jdbcT = jdbcT;
 	}
 	public List allArticles()
-	{
-		String sql="select * from articles where deleteflag=0 order by id desc";
-		List list=jdbcT.queryForList(sql);
-		Iterator iterator=list.iterator();
-		return list;		
-	}
+    {
+        String sql="select articles.id,title,articles.content,articles.create_date,articles.update_date,count(comments.id) as count from articles left join comments "+
+"on articles.id=comments.article_id and articles.deleteflag=0 and comments.deleteflag=0 "+
+"group by articles.id "+
+"order by articles.id desc";
+        List list=jdbcT.queryForList(sql);
+        Iterator iterator=list.iterator();
+        return list;        
+    }
 	
 	public List getDetailById(Long id){
 		String sql="select * from articles where deleteflag=0 and id="+id;
