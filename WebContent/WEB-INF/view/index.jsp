@@ -41,9 +41,6 @@
 <body>    
     <div class="home">    
         <div class="header row-fluid">
-            <div class="pull-left">
-                <a class="headItem" href="#">姑射蝉</a>
-            </div>
             <div class="pull-right">
                 <a class="headItem"  href="${ctx}/articles/form">新文章</a>
             </div>
@@ -91,6 +88,7 @@
          <c:forEach begin="0" end="2" items="${articles}" var="article">
          <div class="article">
              <h2 class="articleTicle">${article.title}</h2>
+             <p class="articleDate">${fn:substring(articles[0].create_date,0,19)}</p>
              <hr>
              <div>${article.content}</div>             
              <hr>

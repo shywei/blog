@@ -95,6 +95,10 @@ a:active {
 .articleTitle {
     text-align: center;
 }
+.articleDate {
+	color:#808080;
+	opacity:0.7;
+}
 .newArticle {
     background-color: #fff;
 }

@@ -69,7 +69,7 @@ public class ArticleController {
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = formatter.format(currentTime);
-        if(request.getParameter("id")==null){
+        if(id==null){
             articlesDao.addArticle(title, content, contentText, dateString, dateString, 1);
         }else{            
             articlesDao.updateArticle(id, title, content, contentText,  dateString, 1);

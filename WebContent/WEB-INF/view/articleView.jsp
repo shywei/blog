@@ -13,25 +13,23 @@
     <div class="contents">
         <div class="container">
          <br>
-         <c:forEach items="${articles}" var="article">
          <div class="article">
-             <h2 class="articleTitle">${article.title}</h2>
-             <p class="articleTitle"><fmt:formatDate value="${article.create_date}" pattern="yyyy-MM-dd HH:mm:ss"/> ${article.update_date}</p>
+             <h2 class="articleTitle">${articles[0].title}</h2>
+             <p class="articleTitle articleDate">发表于：${fn:substring(articles[0].create_date,0,19)} 更新于：${fn:substring(articles[0].update_date,0,19)}</p>
              <hr>
-             <div>${article.content}</div>             
+             <div>${articles[0].content}</div>             
              <hr>
              <div class="row-fluid">
                  <a class="pull-left">
-                 2016-01-15
+                 评论（）
                  </a>
-                 <a href="${ctx}/articles/view?id=${article.id}" class="pull-right">
-                 全文链接
+                 <a href="${ctx}/articles/form?articleId=${articles[0].id}" class="pull-right">
+                 修改
                  </a>
                  <br>
              </div>
          </div>         
          <br>
-         </c:forEach>
         </div>
         <div class="borderImage"></div>
     </div>
