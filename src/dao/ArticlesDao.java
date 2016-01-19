@@ -39,7 +39,8 @@ public class ArticlesDao {
     }
     
     public List getDetailById(Long id){
-        String sql="select * from articles where deleteflag=0 and id="+id;
+        String sql="select articles.id,title,articles.content,articles.create_date,articles.update_date,count(comments.id) as count from articles left join comments "+
+"on articles.id=comments.article_id and articles.deleteflag=0 and comments.deleteflag=0 and articles.id="+id;
         List list=jdbcT.queryForList(sql);
         Iterator iterator=list.iterator();
         return list;    

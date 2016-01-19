@@ -21,7 +21,7 @@
              <hr>
              <div class="row-fluid">
                  <a class="pull-left">
-                 评论（）
+                 评论（${articles[0].count}）
                  </a>
                  <a href="${ctx}/articles/form?articleId=${articles[0].id}" class="pull-right">
                  修改
