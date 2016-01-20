@@ -49,7 +49,9 @@
                    </script>
                         <!-- 实例化编辑器 -->
                         <script type="text/javascript">
-                        var ue = UE.getEditor('container');
+                        var ue = UE.getEditor('container',{
+                            initialFrameHeight:400
+                        });
                         </script>
                     </div>
                 </div>        

@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+
 import dao.ArticlesDao;
+import dao.CommentsDao;
 
 @Controller
 @RequestMapping(value="/articles")
 public class ArticleController {
     @Resource(name = "articlesDao")
     private ArticlesDao articlesDao = null;
+    @Resource(name = "commentsDao")
+    private CommentsDao commentsDao = null;
     
     @RequestMapping(value={"/list"})
      public String list(Model model){
@@ -32,6 +36,8 @@ public class ArticleController {
     public String view(Long id,Model model){
          List list =articlesDao.getDetailById(id);
          model.addAttribute("articles", list);
+         List comments=commentsDao.getCommentsByArticleId(id);
+         model.addAttribute("comments", comments);
         return "articleView";
     }
     

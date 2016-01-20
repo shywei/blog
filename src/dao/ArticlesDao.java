@@ -39,10 +39,11 @@ public class ArticlesDao {
     }
     
     public List getDetailById(Long id){
-        String sql="select articles.id,title,articles.content,articles.create_date,articles.update_date,count(comments.id) as count from articles left join comments "+
-"on articles.id=comments.article_id and articles.deleteflag=0 and comments.deleteflag=0 and articles.id="+id;
+        String sql="select articles.id,title,articles.content,articles.content_text,articles.create_date,articles.update_date,count(comments.id) as count from articles left join comments "+
+"on articles.id=comments.article_id and articles.deleteflag=0 and comments.deleteflag=0 where articles.id="+id;
         List list=jdbcT.queryForList(sql);
         Iterator iterator=list.iterator();
+        System.out.println(sql);
         return list;    
     }
     

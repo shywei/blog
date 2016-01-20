@@ -24,7 +24,7 @@ public class CommentsDao {
     } 
     
     public List getCommentsByArticleId(Long id){
-        String sql="select * from comments where deleteflag=0 and article_id="+id;
+        String sql="select * from comments where deleteflag=0 and article_id="+id+" order by id desc";
         List list=jdbcT.queryForList(sql);
         Iterator iterator=list.iterator();
         return list;
@@ -36,8 +36,9 @@ public class CommentsDao {
         return count;
     }
     
-    public void addComment(Long id,String content){
-        String sql="insert into comments ('article_id','content') values("+id+",'"+content+"')";
+    public void addComment(Long id,String content,int type,String createBy,String date){
+        String sql="insert into comments (content,create_by,create_date,update_date,article_id,type) values('"+content+"','"+createBy+"','"+date+"','"+date+"',"+id+","+type+")";
+        System.out.println(sql);
         jdbcT.execute(sql);
     }
     

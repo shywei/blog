@@ -88,7 +88,7 @@
          <c:forEach begin="0" end="2" items="${articles}" var="article">
          <div class="article">
              <h2 class="articleTicle">${article.title}</h2>
-             <p class="articleDate">${fn:substring(articles[0].create_date,0,19)}</p>
+             <p class="articleDate">${fn:substring(article.create_date,0,19)}</p>
              <hr>
              <div>${article.content}</div>             
              <hr>
