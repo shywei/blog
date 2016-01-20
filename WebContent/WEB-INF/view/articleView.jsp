@@ -22,6 +22,28 @@
                 $("#commentType").val("0");
                 $("#commentContent").attr('placeholder',"必有高论");
             }                
+        });
+        $("#newComment").validate({
+        	 rules: {
+        		   createBy: {
+        		    	required: true,
+        		    	maxlength: 10
+        		   },
+        		   commentContent: {
+        		    	required: true,
+        		    	maxlength: 300
+        		   }
+       		  },
+        	messages: {
+        		   createBy: {
+        		    	required: "无名之辈不得插嘴",
+        		    	maxlength: "10字以上请充值"
+        		   },
+        		   commentContent: {
+        		    	required: "没话说你点什么点",
+        		    	maxlength: "超过300字的评论没人会看的"
+        		   }
+       		  }
         })
     });
 </script>
@@ -36,7 +58,7 @@
              <p class="articleTitle articleDate">发表于：${fn:substring(articles[0].create_date,0,19)} 更新于：${fn:substring(articles[0].update_date,0,19)}</p>
              <hr>
              <div class="articleContent">${articles[0].content}</div>             
-             <hr>
+             <div class="borderLine"></div>
              <div class="row-fluid">
                  <!-- JiaThis Button BEGIN -->
                 <div class="jiathis_style"><span class="jiathis_txt">分享到：</span>

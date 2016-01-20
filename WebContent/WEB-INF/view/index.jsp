@@ -65,7 +65,7 @@
                 <p>而游乎四海之外</p>
                 <p>——《庄子·逍遥游》</p>
                 <p>
-                    <a class="ghost-button-transition" href="${ctx}/articles/list" role="button">进入网站</a>
+                    <a class="ghost-button-transition" href="${ctx}/articles/list" role="button">进入博客</a>
                 </p>
             </div>
         </div>
@@ -93,11 +93,11 @@
              <div>${article.content}</div>             
              <hr>
              <div class="row-fluid">
-                 <a class="pull-left">
-                 评论（${article.count}）
+                 <a class="pull-left comment">
+                 评论(${article.count})
                  </a>
-                 <a href="${ctx}/articles/view?id=${article.id}" class="pull-right">
-                 全文链接
+                 <a href="${ctx}/articles/view?id=${article.id}" class="pull-right comment">
+                 查看全文
                  </a>
                  <br>
              </div>
@@ -180,6 +180,11 @@
             </div>
             <br>
         </div>
+        <div class="foot">
+	        <div>
+	            <span style="color:#A8A9AD">Copyright ©2016 <a href="${ctx}">姑射蝉</a></span>
+	        </div>
+	    </div>
     </div>
 </body>
 </html>

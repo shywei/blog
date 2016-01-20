@@ -10,3 +10,4 @@
 <!-- 编辑器源码文件 -->
 <script type="text/javascript" src="${ctx}/static/ueditor/ueditor.all.js"></script>
 <script src="${ctx}/static/jquery-validation-1.14.0/dist/jquery.validate.min.js" type="text/javascript"></script>
+<link href="${ctx}/static/jquery-validation-1.14.0/demo/site-demos.css" type="text/css" rel="stylesheet" />

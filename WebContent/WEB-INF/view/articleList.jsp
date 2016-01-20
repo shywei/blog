@@ -21,11 +21,11 @@
              <div>${article.content}</div>             
              <hr>
              <div class="row-fluid">
-                 <a class="pull-left">
-                 评论（${article.count}）
+                 <a class="pull-left comment">
+                 评论(${article.count})
                  </a>
-                 <a href="${ctx}/articles/view?id=${article.id}" class="pull-right">
-                 全文链接
+                 <a href="${ctx}/articles/view?id=${article.id}" class="pull-right comment">
+                 查看全文
                  </a>
                  <br>
              </div>
