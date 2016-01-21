@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <%@ include file="/WEB-INF/view/include/head.jsp"%>
-<title>姑射蝉——聒噪千年</title>
+<title>姑射蝉</title>
 <script>
     $(document).ready(function(){
         //alert("${articles}");
@@ -45,7 +45,7 @@
                 <a class="headItem"  href="${ctx}/articles/form">新文章</a>
             </div>
             <div class="pull-right">
-                <a class="headItem"  href="#">留言板</a>
+                <a class="headItem"  href="${ctx}/guestBook">留言板</a>
             </div>
             <div class="pull-right">
                 <a class="headItem"  href="#">登录</a>
@@ -110,21 +110,13 @@
         <div class="container">
             <br>
             <div class="row">
-                <div class="col-sm-3">                
-                    <h5>网站地图</h5>
+                <div class="col-sm-3">
+                    <h5>最新文章</h5>
                     <div class="row">
                         <div class="col-xs-12">
-                        <a>Bitcoin Wallet</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a>Online Bitcoin Payments</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a>MassPay</a>
+                            <p><a href="${ctx}/articles/view?id=${articles[0].id}">${articles[0].title}&nbsp;&nbsp;<span style="font-size:12px;">${fn:substring(articles[0].create_date,0,10)}</span></a></p>
+                            <p><a href="${ctx}/articles/view?id=${articles[1].id}">${articles[1].title}&nbsp;&nbsp;<span style="font-size:12px;">${fn:substring(articles[1].create_date,0,10)}</span></a></p>
+                            <p><a href="${ctx}/articles/view?id=${articles[2].id}">${articles[2].title}&nbsp;&nbsp;<span style="font-size:12px;">${fn:substring(articles[2].create_date,0,10)}</span></a></p>
                         </div>
                     </div>
                 </div>
@@ -132,48 +124,25 @@
                     <h5>友情链接</h5>
                     <div class="row">
                         <div class="col-xs-12">
-                            <a>About</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a>Legals</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a>Press</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a>News &amp; Blog</a>
+                            <a href="http://slfmessi.github.io/" target="_blank">琛珏的个人网站</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <h5>权利声明</h5>
+                    <h5>标签云</h5>
                     <div class="row">
                         <div class="col-xs-12">
-                            <a>How to Buy Bitcoin</a>
+                            <a href="${ctx}/404">你点我试试</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <h5>关于我</h5>
+                    <h5>关于作者</h5>
                     <div class="row">
                         <div class="col-xs-12">
-                            <a>support@snapcard.io</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a>Give us a call 415-374-7356</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div>660 4th Street STE 462</div>
+                            <p><a href="${ctx}/aboutme">本站说明</a></p>
+                            <p><a href="${ctx}/guestBook">在线留言</a></p>
+                            <p><a href="http://weibo.com/u/1795303815" target="_blank">新浪微博</a></p>
                         </div>
                     </div>
                 </div>
@@ -181,10 +150,10 @@
             <br>
         </div>
         <div class="foot">
-	        <div>
-	            <span style="color:#A8A9AD">Copyright ©2016 <a href="${ctx}">姑射蝉</a></span>
-	        </div>
-	    </div>
+            <div>
+                <span style="color:#A8A9AD">Copyright ©2016 <a href="${ctx}">姑射蝉</a></span>
+            </div>
+        </div>
     </div>
 </body>
 </html>

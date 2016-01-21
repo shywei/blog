@@ -49,4 +49,9 @@
             <ref bean="jdbcTemplate" />
         </property>
     </bean>
+    <bean id="guestBookDao" class="dao.GuestBookDao">
+        <property name="jdbcT">
+            <ref bean="jdbcTemplate" />
+        </property>
+    </bean>
 </beans>

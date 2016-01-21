@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>  
-<div class="contents row-fluid">
+<div id="header" class="contents row-fluid">
     <div class="header">
         <div class="row-fluid">
             <div class="pull-right">
@@ -21,10 +21,10 @@
         </div>
     </div>
     <div class="container">
-	    <a class="tabs"  href="${ctx}">首页</a>
-	    <a class="tabs"  href="${ctx}">归档</a>
-	    <a class="tabs"  href="${ctx}">留言版</a>
-	    <a class="tabs"  href="${ctx}">关于我</a>
+        <a class="tabs"  href="${ctx}/articles/list">首页</a>
+        <a class="tabs"  href="${ctx}/articles/list">归档</a>
+        <a class="tabs"  href="${ctx}/guestBook">留言板</a>
+        <a class="tabs"  href="${ctx}/aboutme">关于我</a>
     </div>
     <div class="borderImage"></div>
 </div>

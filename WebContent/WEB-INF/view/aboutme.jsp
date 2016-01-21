@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <%@ include file="/WEB-INF/view/include/head.jsp"%>
-<title>姑射蝉</title>
+<title>文章列表</title>
 <script type="text/javascript" >
     $(document).ready(function(){
         if($("#mainContent").height()<$(document).height()-$("#header").height()-$("#footer").height())
@@ -19,27 +19,10 @@
     <div id="mainContent" class="contents">
     <br>
         <div class="container">        
-         <c:forEach items="${articles}" var="article">
-         <div class="article">
-             <h2 class="articleTicle">${article.title}</h2>
-             <p class="articleDate">${fn:substring(articles[0].create_date,0,19)}</p>
-             <hr>
-             <div>${article.content}</div>             
-             <hr>
-             <div class="row-fluid">
-                 <a class="pull-left comment">
-                 评论(${article.count})
-                 </a>
-                 <a href="${ctx}/articles/view?id=${article.id}" class="pull-right comment">
-                 查看全文
-                 </a>
-                 <br>
-             </div>
-         </div>         
-         <br>
-         </c:forEach>
-        </div>
+         
+             
+        </div>        
     </div>
-    <%@ include file="/WEB-INF/view/include/footer.jsp"%>
+<%@ include file="/WEB-INF/view/include/footer.jsp"%>
 </body>
 </html>

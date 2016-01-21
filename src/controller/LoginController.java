@@ -36,6 +36,11 @@ public class LoginController{
          return "index";
      }
     
+    @RequestMapping(value="/aboutme")
+    public String aboutme(Model model){
+        return "aboutme";
+    }
+    
     @ResponseBody
     @RequestMapping(value="/upload")
     public String upload(HttpServletRequest request){

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <%@ include file="/WEB-INF/view/include/head.jsp"%>
-<title>${articles[0].title}</title>
+<title>留言板</title>
 <script type="text/javascript" >
     $(document).ready(function(){
         if($("#mainContent").height()<$(document).height()-$("#header").height()-$("#footer").height())
@@ -15,23 +15,23 @@
             if($("#anonymous").is(':checked')){
                 $("#createBy").val("不愿透露姓名的王司徒");
                 $("#createBy").attr("readonly","readonly");
-                $("#commentType").val("1");
-                $("#commentContent").attr('placeholder',"粗鄙之语");
+                $("#noteType").val("1");
+                $("#noteContent").attr('placeholder',"粗鄙之语");
             }                
             else{
                 $("#createBy").removeAttr("readonly");
                 $("#createBy").val("");
-                $("#commentType").val("0");
-                $("#commentContent").attr('placeholder',"必有高论");
+                $("#noteType").val("0");
+                $("#noteContent").attr('placeholder',"必有高论");
             }                
         });
-        $("#newComment").validate({
+        $("#newNote").validate({
              rules: {
                    createBy: {
                         required: true,
                         maxlength: 10
                    },
-                   commentContent: {
+                   noteContent: {
                         required: true,
                         maxlength: 300
                    }
@@ -41,7 +41,7 @@
                         required: "无名之辈不得插嘴",
                         maxlength: "10字以上请充值"
                    },
-                   commentContent: {
+                   noteContent: {
                         required: "没话说你点什么点",
                         maxlength: "超过300字的评论没人会看的"
                    }
@@ -53,45 +53,10 @@
 <body>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
     <div id="mainContent" class="contents">
-        <div class="container">
          <br>
-         <div class="article">
-             <h2 class="articleTitle">${articles[0].title}</h2>
-             <p class="articleTitle articleDate">发表于：${fn:substring(articles[0].create_date,0,19)} 更新于：${fn:substring(articles[0].update_date,0,19)}</p>
-             <hr>
-             <div class="articleContent">${articles[0].content}</div>             
-             <div class="borderLine"></div>
-             <div class="row-fluid">
-                 <!-- JiaThis Button BEGIN -->
-                <div class="jiathis_style"><span class="jiathis_txt">分享到：</span>
-                    <a class="jiathis_button_qzone"></a>
-                    <a class="jiathis_button_tsina"></a>
-                    <a class="jiathis_button_tqq"></a>
-                    <a class="jiathis_button_weixin"></a>
-                    <a class="jiathis_button_renren"></a>
-                    <a class="jiathis_button_douban"></a>
-                    <a class="jiathis_button_email"></a>
-                    <a class="jiathis_button_fb"></a>
-                    <a class="jiathis_button_twitter"></a>
-                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-                </div>
-                               
-                 
-                 <a href="${ctx}/articles/delete?articleId=${articles[0].id}" class="pull-right comment">
-                 删除
-                 </a>
-                 <a href="${ctx}/articles/form?articleId=${articles[0].id}" class="pull-right comment">
-                 修改
-                 </a>
-                 <br>
-             </div>
-         </div>         
-         <br>
-        </div>
         <div class="container">
             <div class="article">
-                <form id="newComment" class="form-horizontal" method="post" action="${ctx}/comments/save">
-                    <input type="hidden" value="${articles[0].id}" id="articleId" name="articleId">
+                <form id="newNote" class="form-horizontal" method="post" action="${ctx}/guestBook/save">
                     <div class="form-group">
                         <label for="createBy" class="col-sm-2 control-label item-label">来者何人</label>
                         <div class="col-sm-10">
@@ -101,14 +66,14 @@
                        <div class="form-group">
                         <label class="col-sm-2 control-label  item-label">安敢饶舌</label>
                         <div class="col-sm-10">
-                          <input id="commentType" name="commentType" type="hidden" value="0">
+                          <input id="noteType" name="noteType" type="hidden" value="0">
                           <input id="anonymous" type="checkbox">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="content" class="col-sm-2 control-label  item-label">我有一言</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="commentContent" name="commentContent" placeholder="必有高论"></textarea>
+                            <textarea class="form-control" id="noteContent" name="noteContent" placeholder="必有高论"></textarea>
                         </div>
                       </div>
                       <div class="form-group">
@@ -122,33 +87,33 @@
          </div>
         <div class="container">
             <div class="article">
-                <p class="pull-left comment">评论(${articles[0].count}) </p>
+                <p class="pull-left comment">留言数(${fn:length(guestbook)}) </p>
                 <br>
                 <div class="row-fluid">
-                    <c:if test="${not empty comments}">
+                    <c:if test="${not empty guestbook}">
                     <ul class="notes">
-                    <c:forEach items="${comments}" var="comment">
+                    <c:forEach items="${guestbook}" var="note">
                         <li class="note">
                             <span>
-                            <c:if test="${comment.type eq 1}">
+                            <c:if test="${note.type eq 1}">
                                 <b class="userTitle">腐 
 草之萤光</b>&nbsp;
                             </c:if>
-                            <c:if test="${comment.type eq 0}">
+                            <c:if test="${note.type eq 0}">
                                 <b class="userTitle">天空之皓月</b>&nbsp;
                             </c:if>
-                                <b>${comment.create_by}</b>&nbsp;
-                                发表于&nbsp; ${fn:substring(comment.create_date,0,19)}
+                                <b>${note.create_by}</b>&nbsp;
+                                发表于&nbsp; ${fn:substring(note.create_date,0,19)}
                             </span>
-                            <p>${comment.content}</p>
+                            <p>${note.content}</p>
                         </li>
                     </c:forEach>
                     </ul>
                     </c:if>
-                    <c:if test="${empty comments}">
+                    <c:if test="${empty guestbook}">
                        <ol class="notes">
                            <li class="note">
-                           当前还没有评论。
+                           当前还没有留言。
                            </li>
                        </ol>
                     </c:if>
@@ -157,13 +122,5 @@
          </div>
     </div>
     <%@ include file="/WEB-INF/view/include/footer.jsp"%>
-    <script type="text/javascript" >
-        var jiathis_config={
-            summary:"${fn:substring(articles[0].content_text,0,30)}",
-            title:"《${articles[0].title}》——姑射蝉"
-        }
-    </script>
-    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-    <!-- JiaThis Button END --> 
 </body>
 </html>

@@ -10,6 +10,8 @@
 <script type="text/javascript">
     $(document).ready(function(){
         //alert("${articles}");
+        if($("#mainContent").height()<$(document).height()-$("#header").height()-$("#footer").height())
+            $("#mainContent").height($(document).height()-$("#header").height()-$("#footer").height());
         $("#save").click(function(){
             $("#content").val(UE.getEditor('container').getContent());
             $("#contentText").val(UE.getEditor('container').getContentTxt());
@@ -27,7 +29,7 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
-    <div class="contents">
+    <div id="mainContent" class="contents">
         <div class="container">
         <br>
             <form id="inputForm" class="form-horizontal" method="post">
@@ -65,7 +67,6 @@
                 </div>
             </form>
         </div>
-        <div class="borderImage"></div>
     </div>
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>
 </body>
