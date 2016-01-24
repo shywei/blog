@@ -19,14 +19,12 @@ public class CommentsDao {
     public List getCommentById(Long id){
         String sql="select * from comments where deleteflag=0 and id="+id;
         List list=jdbcT.queryForList(sql);
-        Iterator iterator=list.iterator();
         return list;    
     } 
     
     public List getCommentsByArticleId(Long id){
         String sql="select * from comments where deleteflag=0 and article_id="+id+" order by id desc";
         List list=jdbcT.queryForList(sql);
-        Iterator iterator=list.iterator();
         return list;
     }
     
@@ -38,7 +36,7 @@ public class CommentsDao {
     
     public void addComment(Long id,String content,int type,String createBy,String date){
         String sql="insert into comments (content,create_by,create_date,update_date,article_id,type) values('"+content+"','"+createBy+"','"+date+"','"+date+"',"+id+","+type+")";
-        System.out.println(sql);
+        //System.out.println(sql);
         jdbcT.execute(sql);
     }
     

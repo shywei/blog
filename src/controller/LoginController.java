@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
@@ -22,12 +23,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.ArticlesDao;
+import dao.UserDao;
 
 
 @Controller
 public class LoginController{
     @Resource(name = "articlesDao")
     private ArticlesDao articlesDao = null;
+    @Resource(name = "userDao")
+    private UserDao userDao = null;
+    
+    public boolean islogin(HttpSession session){
+        if(session.getAttribute("user")!=null)
+            return true;
+        else
+            return false;
+    }
     
     @RequestMapping(value={"/","/index"})
      public String index(Model model){
@@ -39,6 +50,20 @@ public class LoginController{
     @RequestMapping(value="/aboutme")
     public String aboutme(Model model){
         return "aboutme";
+    }
+    
+    @RequestMapping(value="/login")
+    public String login(HttpSession session){
+        if(islogin(session))
+            return "redirect:" + "/";
+        else
+            return "login";
+    }
+    
+    @RequestMapping(value="/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("user");
+        return "redirect:" + "/";
     }
     
     @ResponseBody

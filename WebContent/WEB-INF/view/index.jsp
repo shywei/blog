@@ -9,7 +9,6 @@
 <title>姑射蝉</title>
 <script>
     $(document).ready(function(){
-        //alert("${articles}");
         $("#add").click(function(){
             $("#send").attr('href',"${pageContext.request.contextPath}/say?id="+$("#id").val());
         });
@@ -41,15 +40,22 @@
 <body>    
     <div class="home">    
         <div class="header row-fluid">
+        <c:if test="${not empty sessionScope.user}">
+            <div class="pull-right">
+                <a class="headItem"  href="${ctx}/logout">退出</a>
+            </div>
             <div class="pull-right">
                 <a class="headItem"  href="${ctx}/articles/form">新文章</a>
             </div>
+            </c:if>
             <div class="pull-right">
                 <a class="headItem"  href="${ctx}/guestBook">留言板</a>
             </div>
+            <c:if test="${empty sessionScope.user}">
             <div class="pull-right">
-                <a class="headItem"  href="#">登录</a>
+                <a class="headItem"  onclick="login()">登录</a>
             </div>
+            </c:if>
         </div>
         <div class="jumbotron" style="background-color: inherit;margin-bottom:0px;">            
             <div class="container welcome">
@@ -93,7 +99,7 @@
              <div>${article.content}</div>             
              <hr>
              <div class="row-fluid">
-                 <a class="pull-left comment">
+                 <a href="${ctx}/articles/view?id=${article.id}#comment" class="pull-left comment">
                  评论(${article.count})
                  </a>
                  <a href="${ctx}/articles/view?id=${article.id}" class="pull-right comment">
@@ -126,6 +132,9 @@
                         <div class="col-xs-12">
                             <a href="http://slfmessi.github.io/" target="_blank">琛珏的个人网站</a>
                         </div>
+                        <div class="col-xs-12">
+                            <a href="http://v3.bootcss.com/" target="_blank">Bootstrap中文文档</a>
+                        </div>                        
                     </div>
                 </div>
                 <div class="col-sm-3">

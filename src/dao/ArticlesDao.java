@@ -19,43 +19,41 @@ public class ArticlesDao {
     }
     public List allArticles()
     {
-        String sql="select articles.id,title,articles.content,articles.create_date,articles.update_date,count(comments.id) as count from articles left join comments "+
-"on articles.id=comments.article_id and articles.deleteflag=0 and comments.deleteflag=0 and articles.type=0 "+
+        String sql="select articles.id,title,articles.content,articles.create_date,articles.update_date,count(comments.id) as count from articles left join (select * from comments where comments.deleteflag=0)comments "+
+"on articles.id=comments.article_id where articles.deleteflag=0 and articles.type=0 "+
 "group by articles.id "+
 "order by articles.id desc";
-        List list=jdbcT.queryForList(sql);
-        Iterator iterator=list.iterator();
+        List list=jdbcT.queryForList(sql);        
+        //System.out.println(sql);
         return list;        
     }
     public List allTemps()
     {
-        String sql="select articles.id,title,articles.content,articles.create_date,articles.update_date,count(comments.id) as count from articles left join comments "+
-"on articles.id=comments.article_id and articles.deleteflag=0 and comments.deleteflag=0 and articles.type=1 "+
+        String sql="select articles.id,title,articles.content,articles.create_date,articles.update_date,count(comments.id) as count from articles left join (select * from comments where comments.deleteflag=0)comments "+
+"on articles.id=comments.article_id where articles.deleteflag=0 and articles.type=1 "+
 "group by articles.id "+
 "order by articles.id desc";
-        List list=jdbcT.queryForList(sql);
-        Iterator iterator=list.iterator();
+        List list=jdbcT.queryForList(sql);        
         return list;        
     }
     
     public List getDetailById(Long id){
-        String sql="select articles.id,title,articles.content,articles.content_text,articles.create_date,articles.update_date,count(comments.id) as count from articles left join comments "+
-"on articles.id=comments.article_id and articles.deleteflag=0 and comments.deleteflag=0 where articles.id="+id;
-        List list=jdbcT.queryForList(sql);
-        Iterator iterator=list.iterator();
-        System.out.println(sql);
+        String sql="select articles.id,title,articles.content,articles.content_text,articles.create_date,articles.update_date,count(comments.id) as count from articles left join (select * from comments where comments.deleteflag=0)comments "+
+"on articles.id=comments.article_id where articles.deleteflag=0 and articles.id="+id;
+        List list=jdbcT.queryForList(sql);        
+        //System.out.println(sql);
         return list;    
     }
     
     public void updateArticle(Long id,String title,String content,String contentText,String updateDate,int type){
         String sql="update articles set title='"+title+"',content='"+content+"',content_text='"+contentText+"',update_date='"+updateDate+"',type="+type+" where id="+id;
-        System.out.println(sql);
+        //System.out.println(sql);
         jdbcT.execute(sql);
     }    
     
     public void addArticle(String title,String content,String contentText,String createDate,String updateDate,int type){
         String sql="insert into articles (title,content,content_text,create_date,update_date,type) values('"+title+"','"+content+"','"+contentText+"','"+createDate+"','"+updateDate+"',"+type+")";
-        System.out.println(sql);
+        //System.out.println(sql);
         jdbcT.execute(sql);
     }
 }

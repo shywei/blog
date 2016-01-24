@@ -76,19 +76,21 @@
                     <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
                 </div>
                                
-                 
+                 <c:if test="${not empty sessionScope.user}">
                  <a href="${ctx}/articles/delete?articleId=${articles[0].id}" class="pull-right comment">
                  删除
                  </a>
                  <a href="${ctx}/articles/form?articleId=${articles[0].id}" class="pull-right comment">
                  修改
                  </a>
+                 </c:if>
                  <br>
              </div>
          </div>         
          <br>
         </div>
         <div class="container">
+            <a id="comment"> </a>
             <div class="article">
                 <form id="newComment" class="form-horizontal" method="post" action="${ctx}/comments/save">
                     <input type="hidden" value="${articles[0].id}" id="articleId" name="articleId">
@@ -121,7 +123,7 @@
              <br>
          </div>
         <div class="container">
-            <div class="article">
+            <div class="article">                
                 <p class="pull-left comment">评论(${articles[0].count}) </p>
                 <br>
                 <div class="row-fluid">

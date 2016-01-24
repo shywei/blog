@@ -54,4 +54,9 @@
             <ref bean="jdbcTemplate" />
         </property>
     </bean>
+    <bean id="userDao" class="dao.UserDao">
+        <property name="jdbcT">
+            <ref bean="jdbcTemplate" />
+        </property>
+    </bean>
 </beans>

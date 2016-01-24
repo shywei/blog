@@ -11,3 +11,14 @@
 <script type="text/javascript" src="${ctx}/static/ueditor/ueditor.all.js"></script>
 <script src="${ctx}/static/jquery-validation-1.14.0/dist/jquery.validate.min.js" type="text/javascript"></script>
 <link href="${ctx}/static/jquery-validation-1.14.0/demo/site-demos.css" type="text/css" rel="stylesheet" />
+<link href="${ctx}/static/jBox-0.3.2/jBox.css" type="text/css" rel="stylesheet" />
+<script src="${ctx}/static/jBox-0.3.2/jBox.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+function login(){
+    informModal = new jBox('Modal',{  
+         content:'<iframe id="loginFrame" name="loginFrame" src="${ctx}/login" style="overflow:visible;display: block;min-height:400px" scrolling="no" frameborder="0" width="100%"></iframe>',
+         width: 800,
+         constructOnInit: true
+     }).open(); 
+}
+</script>
